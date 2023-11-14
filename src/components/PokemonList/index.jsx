@@ -8,7 +8,7 @@ export const PokemonList = ({ pokemon }) => {
     <div>
       {pokemon.map((item) => (
         <div key={item.name}>
-          {item.name}
+          <h1>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</h1>
           <button value={item.url} onClick={(e) => console.log(e.target.value)}>
             Full Profile
           </button>
@@ -19,7 +19,4 @@ export const PokemonList = ({ pokemon }) => {
 };
 
 
-PokemonList.propTypes = {
-  pokemon: PropTypes.string.isRequired,
-};
 
