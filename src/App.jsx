@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { PokemonList } from "./components/PokemonList";
+import { List } from "./components/List";
 import { getPokemonList} from "./api/GetAxios";
 
 import "./App.css";
@@ -11,10 +11,10 @@ function App() {
   useEffect(() => {
     const getPokemon = async () => {
       try {
-        const data = await getPokemonList();
+        const data = await getPokemonList(1, 6);
         setPokemon(data);
       } catch (error) {
-        console.error("Erro:", error);
+        console.error("Error:", error);
       }
     };
     getPokemon();
@@ -22,7 +22,8 @@ function App() {
   
   return (
     <>
-      <PokemonList pokemon={pokemon} />
+
+        <List pokemon={pokemon} />
 
     </>
   );
