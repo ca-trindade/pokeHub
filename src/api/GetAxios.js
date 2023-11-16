@@ -24,3 +24,15 @@ export const getPokemonList = async (start, end) => {
     throw error;
   }
 };
+
+
+export const getPokemonName = async (nameFromInput) => {
+  try {
+    const response = await axios.get(BASE_URL + PATH.pokemon + nameFromInput);
+    console.log(response.data.results);
+    return response.data.results;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+};

@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import { List } from "./components/List";
 import { getPokemonList } from "./api/GetAxios";
-
-
+import { SearchInput } from "./components/SearchInput";
+// import { useSelector } from "react-redux";
 import "./App.css";
+
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
   const [start, setStart] = useState(1);
   const [end, setEnd] = useState(6);
   
+
 
   function handleClick() {
     setStart((prevEnd) => prevEnd + 1);
@@ -30,6 +32,7 @@ function App() {
 
   return (
     <>
+      <SearchInput />
       <List pokemon={pokemon} />
       <button onClick={handleClick}>More</button>
     </>

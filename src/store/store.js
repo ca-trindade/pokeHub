@@ -1,8 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import dataApiReducer from "./dataAPI/dataAPISlice";
+import searchInputReducer from "./searchAPI/searchSlice";
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
-    dataApi: dataApiReducer,
+    pokemonName: searchInputReducer,
   },
+  devTools: true,
 });
+
+export default store;
