@@ -26,11 +26,20 @@ export const getPokemonList = async (start, end) => {
 };
 
 
-export const getPokemonName = async (nameFromInput) => {
+export const getPokemonName = async () => {
   try {
-    const response = await axios.get(BASE_URL + PATH.pokemon + nameFromInput);
+    const response = await axios.get(BASE_URL + PATH.pokemon + "bulbasaur");
     console.log(response.data.results);
-    return response.data.results;
+    return {
+      abilities: response.data.abilities.map((p) => ({
+        name: p.ability.name,
+      })),
+      name: response.data.name,
+      weight: response.data.weight,
+      height: response.data.height,
+      order: response.data.order,
+      sprites: response.data.sprites.other["official-artwork"].front_default,
+    };
   } catch (error) {
     console.error("Error:", error);
     throw error;

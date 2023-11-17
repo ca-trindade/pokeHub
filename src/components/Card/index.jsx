@@ -1,26 +1,31 @@
-import PropTypes from "prop-types";
+import { useEffect } from "react";
+import { getPokemonName } from "../../api/GetAxios"
+import { useSelector } from "react-redux";
+import { getPokemonNameSelector } from "../../store/searchAPI/selectores";
 
-export const Card = ({ namePokemon }) => {
+
+export const Card = () => {
   
-  console.log(namePokemon);
+const searchBox = useSelector(getPokemonNameSelector);
+
+  useEffect(() => {
+    const getPokemon = async () => {
+      try {
+        const data = await getPokemonName();
+        console.log(data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+    getPokemon();
+  }, []);
+
+  console.log();
   return (
     <>
       <div>
-        {/* {namePokemon.map((item) => (
-          <div key={item.id}>
-            <p>{item.id}</p>
-            <img src="" alt="photo" />
-            <h2>abilities abilities</h2>
-            <h2>types types</h2>
-          </div>
-        ))} */}
+        <h1>{searchBox}</h1>
       </div>
     </>
   );
-};
-
-
-
-Card.propTypes = {
-  namePokemon: PropTypes.object.isRequired,
 };

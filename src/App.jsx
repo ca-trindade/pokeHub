@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
+
 import { List } from "./components/List";
 import { getPokemonList } from "./api/GetAxios";
 import { SearchInput } from "./components/SearchInput";
-// import { useSelector } from "react-redux";
 import "./App.css";
 
 
@@ -34,7 +34,9 @@ function App() {
     <>
       <SearchInput />
       <List pokemon={pokemon} />
-      <button onClick={handleClick}>More</button>
+      
+        <button onClick={handleClick}>More</button>
+
     </>
   );
 }

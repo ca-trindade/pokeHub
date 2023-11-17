@@ -1,4 +1,4 @@
-
+import { Card } from "../../components/Card"
 
 export const PokemonCard = () => {
 
@@ -7,7 +7,7 @@ export const PokemonCard = () => {
 
   return (
     <>
-
+<Card />
     </>
   );
 }

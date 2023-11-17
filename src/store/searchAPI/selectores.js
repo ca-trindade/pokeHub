@@ -1,3 +1,3 @@
 import { get } from "lodash"
 
-export const getPokemonName = (store) => get(store, "getName", "");
+export const getPokemonNameSelector = (store) => get(store, "pokemonName.searchBox", "");
