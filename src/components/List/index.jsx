@@ -1,10 +1,8 @@
-//import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 
 export const List = ({ pokemon }) => {
-  // const item = useSelector((state) => state.dataApi.getPokemonApi);
   return (
     <div>
       {pokemon.map((item) => (

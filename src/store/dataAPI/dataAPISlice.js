@@ -1,18 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const dataApiSlice = createSlice({
+  const initialState = {
+    pokemonDataFromApi: {},
+}
+  
+const dataApiSlice = createSlice({
   name: "dataApi",
-  initialState: {
-    pokemonData: [],
-    // start: 1,
-    // end: 6,
-  },
+  initialState,
   reducers: {
     getPokemonApi: (state, action) => {
-      state.getPokemonApi = action.payload;
+      state.pokemonDataFromApi = action.payload.pokemonDataFromApi;
     }  },
 });
 
+export default dataApiSlice.reducer;
 export const { getPokemonApi } = dataApiSlice.actions;
-export const dataApiReducer = dataApiSlice.reducer;
-export default dataApiReducer;
+

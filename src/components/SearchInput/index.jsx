@@ -15,10 +15,10 @@ export const SearchInput = () => {
 
   return (
     <>
-      <label htmlFor="searchPokemon">Search Pokemon:</label>
       <input
         type="text"
         id="searchPokemon"
+        placeholder="Search Pokemon"
         value={nameToSearch}
         onChange={(e) => setNameToSearch(e.target.value)}
       />
