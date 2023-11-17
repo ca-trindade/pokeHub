@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import store from "./store/store";
 import { PokemonCard } from "./pages/PokemonCard";
 import Root from "./routes/root";
-import "./index.css";
+import GlobalStyle from "./globalStyles"
 
 const router = createBrowserRouter([
   {
@@ -21,6 +21,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
+      <GlobalStyle />
       <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
