@@ -5,7 +5,7 @@ export const Navbar = () => {
     <div>
       <div>
         <img
-          // src="https://fontmeme.com/temporary/0ecddf89784f6353726037c91ae6a9bf.png"
+          src="https://fontmeme.com/temporary/0ecddf89784f6353726037c91ae6a9bf.png"
           alt="logotype"
         />
       </div>
