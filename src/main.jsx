@@ -5,7 +5,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import store from "./store/store";
 import { PokemonCard } from "./pages/PokemonCard";
 import Root from "./routes/root";
-import GlobalStyle from "./globalStyles"
+import GlobalStyle from "./globalStyles";
+import ThemeContextProvider from "./components/hooks/useContext";
+import ThemeButton from "./components/ThemeContext";
+import { ThemeContext } from "./components/hooks/useContext";
 
 const router = createBrowserRouter([
   {
@@ -20,9 +23,14 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <GlobalStyle />
-      <RouterProvider router={router} />
-    </Provider>
+    <ThemeContextProvider>
+      <ThemeButton />
+      <Provider store={store}>
+        <ThemeContext.Consumer>
+          {(theme) => <GlobalStyle theme={theme} />}
+        </ThemeContext.Consumer>
+        <RouterProvider router={router} />
+      </Provider>
+    </ThemeContextProvider>
   </React.StrictMode>
 );

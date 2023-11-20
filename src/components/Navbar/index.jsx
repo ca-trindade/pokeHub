@@ -1,17 +1,18 @@
 import { SearchInput } from "../SearchInput";
+import { ImageContainer, ImageLogo } from "./style";
 
 export const Navbar = () => {
   return (
-    <div>
-      <div>
-        <img
-          // src="https://fontmeme.com/temporary/0ecddf89784f6353726037c91ae6a9bf.png"
+    <>
+      <ImageContainer>
+        <ImageLogo
+          src="https://fontmeme.com/permalink/231120/ce6b0931ceb8356e846a2aa0a1abadf4.png"
           alt="logotype"
         />
-      </div>
+      </ImageContainer>
       <div>
         <SearchInput />
       </div>
-    </div>
+    </>
   );
 };
