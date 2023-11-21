@@ -9,6 +9,7 @@ import GlobalStyle from "./globalStyles";
 import ThemeContextProvider from "./components/hooks/useContext";
 import ThemeButton from "./components/ThemeContext";
 import { ThemeContext } from "./components/hooks/useContext";
+import { PokemonFullProfile } from "./components/PokemonFullProfile/FullProfile";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
     path: "/pokemonProfile",
     element: <PokemonCard />,
   },
+  {
+    path: "/pokemon/:id",
+    element: <PokemonFullProfile />,
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

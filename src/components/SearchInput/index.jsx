@@ -22,7 +22,7 @@ export const SearchInput = () => {
         value={nameToSearch}
         onChange={(e) => setNameToSearch(e.target.value)}
       />
-      <Link to="/pokemonProfile">
+      <Link to={`/pokemon/${nameToSearch}`}>
         <button type="submit" onClick={handleClick}>
           Search
         </button>

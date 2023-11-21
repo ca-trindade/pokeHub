@@ -43,9 +43,10 @@ export const Paragraph = styled.p`
 `;
 
 export const ListButton = styled.button`
-height: 40px;
-width: 120px;
+  height: 40px;
+  width: 120px;
   border: solid black 1px;
   border-radius: 10px;
+  cursor: pointer;
 `;
 
