@@ -9,11 +9,25 @@ import {Container,
   Paragraph, 
   ListButton,
 } from "./style";
+import { useState } from "react";
+import PokemonProfileModal from "../PokemonProfileModal/Modal";
 
 const KG_TO_GRAMS = 10;
 const PRECISION = 1;
 
 export const List = ({ pokemon }) => {
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const [isModalOPen, setIsModalOpen] = useState(false);
+
+  const openModal = (pokemon) => {
+    setSelectedPokemon(pokemon);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedPokemon(null);
+    setIsModalOpen(false);
+  }
 
   return (
     <Container>
@@ -34,17 +48,20 @@ export const List = ({ pokemon }) => {
                 {item.height.toFixed(PRECISION) / KG_TO_GRAMS} meters
               </Paragraph>
             </ParagraphContainer>
-            <Link to="/pokemonProfile">
+            <Link to={`/pokemon/${item.order}`}>
               <ListButton
                 value={item.name}
-                onClick={(e) => console.log(e.target.value)}
+                onClick={() => openModal(item)}
               >
                 Full Profile
               </ListButton>
-            </Link>
+             </Link>
           </ListPokemon>
         </OrderList>
       ))}
+      {isModalOPen && (
+        <PokemonProfileModal pokemon={selectedPokemon} closeModal={closeModal} />
+      )}
     </Container>
   );
 };
