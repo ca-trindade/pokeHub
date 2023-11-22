@@ -6,6 +6,7 @@ import { PokemonCard } from "../pages/PokemonCard";
 import { useContext } from "react";
 import { ThemeContext } from "../components/hooks/useContext";
 import GlobalStyle from "../globalStyles";
+import PokemonProfileModal from "../components/PokemonProfileModal";
 
 const router = createBrowserRouter([
   {
@@ -16,10 +17,14 @@ const router = createBrowserRouter([
     path: "/pokemonProfile",
     element: <PokemonCard />,
   },
+  {
+    path: "/pokemon/:id",
+    element: <PokemonProfileModal />,
+  },
 ]);
 
 export default function Root() {
-    const { theme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   return (
     <>
       <GlobalStyle theme={theme} />

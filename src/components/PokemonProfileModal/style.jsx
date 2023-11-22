@@ -25,8 +25,8 @@ export const ModalButton = styled.button`
 `;
 
 export const ModalCard = styled.div`
-  width: 190px;
-  height: 254px;
+  width: 590px;
+  height: 754px;
   background: #07182E;
   position: relative;
   display: flex;
@@ -66,4 +66,8 @@ export const CardContent = styled.div`
   background: #07182E;
   inset: 5px;
   border-radius: 15px;
+`;
+
+export const ImageContainer = styled.div`
+
 `;

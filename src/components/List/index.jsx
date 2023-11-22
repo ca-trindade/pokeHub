@@ -10,22 +10,24 @@ import {Container,
   ListButton,
 } from "./style";
 import { useState } from "react";
-import PokemonProfileModal from "../PokemonProfileModal/Modal";
+import { useDispatch } from "react-redux";
+import { getName } from "../../store/searchAPI/searchSlice";
+import PokemonProfileModal from "../PokemonProfileModal";
 
 const KG_TO_GRAMS = 10;
 const PRECISION = 1;
 
 export const List = ({ pokemon }) => {
-  const [selectedPokemon, setSelectedPokemon] = useState(null);
+    const dispatch = useDispatch();
+
   const [isModalOPen, setIsModalOpen] = useState(false);
 
-  const openModal = (pokemon) => {
-    setSelectedPokemon(pokemon);
+  function handleClick(item) {
+    dispatch(getName({ searchBox: item.name }));
     setIsModalOpen(true);
-  };
+  }
 
   const closeModal = () => {
-    setSelectedPokemon(null);
     setIsModalOpen(false);
   }
 
@@ -49,18 +51,17 @@ export const List = ({ pokemon }) => {
               </Paragraph>
             </ParagraphContainer>
             <Link to={`/pokemon/${item.order}`}>
-              <ListButton
-                value={item.name}
-                onClick={() => openModal(item)}
-              >
+              <ListButton value={item.name} onClick={()=>{handleClick(item)}}>
                 Full Profile
               </ListButton>
-             </Link>
+            </Link>
           </ListPokemon>
         </OrderList>
       ))}
       {isModalOPen && (
-        <PokemonProfileModal pokemon={selectedPokemon} closeModal={closeModal} />
+        <PokemonProfileModal
+          closeModal={closeModal}
+        />
       )}
     </Container>
   );

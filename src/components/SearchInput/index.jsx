@@ -24,24 +24,12 @@ export const SearchInput = () => {
           value={nameToSearch}
           onChange={(e) => setNameToSearch(e.target.value)}
         />
-        <Link to="/pokemonProfile">
+        <Link to={`/pokemon/${nameToSearch}`}>
           <ButtonGo type="submit" onClick={handleClick}>
             Go!
           </ButtonGo>
         </Link>
       </ContainerInput>
-      <input
-        type="text"
-        id="searchPokemon"
-        placeholder="Search Pokemon"
-        value={nameToSearch}
-        onChange={(e) => setNameToSearch(e.target.value)}
-      />
-      <Link to={`/pokemon/${nameToSearch}`}>
-        <button type="submit" onClick={handleClick}>
-          Search
-        </button>
-      </Link>
     </>
   );
 };
