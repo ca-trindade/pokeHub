@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import {
+import {Container,
   OrderList,
   ListPokemon,
   ImagePokemon,
   Title,
+  ParagraphContainer, Span, 
   Paragraph, 
   ListButton,
 } from "./style";
@@ -15,7 +16,7 @@ const PRECISION = 1;
 export const List = ({ pokemon }) => {
 
   return (
-    <>
+    <Container>
       {pokemon.map((item) => (
         <OrderList key={item.order}>
           <ListPokemon>
@@ -23,16 +24,16 @@ export const List = ({ pokemon }) => {
             <Title>
               {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
             </Title>
-            <div>
+            <ParagraphContainer>
               <Paragraph>
-                <span className="material-symbols-outlined">weight</span>
+                <Span className="material-symbols-outlined">weight</Span>
                 {item.weight.toFixed(PRECISION) / KG_TO_GRAMS} kg
               </Paragraph>
               <Paragraph>
-                <span className="material-symbols-outlined">height</span>
+                <Span className="material-symbols-outlined">height</Span>
                 {item.height.toFixed(PRECISION) / KG_TO_GRAMS} meters
               </Paragraph>
-            </div>
+            </ParagraphContainer>
             <Link to="/pokemonProfile">
               <ListButton
                 value={item.name}
@@ -44,7 +45,7 @@ export const List = ({ pokemon }) => {
           </ListPokemon>
         </OrderList>
       ))}
-    </>
+    </Container>
   );
 };
 
