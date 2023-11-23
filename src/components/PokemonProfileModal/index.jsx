@@ -5,10 +5,6 @@ import { getPokemonName } from "../../api/GetAxios";
 import { useSelector } from "react-redux";
 import { getPokemonNameSelector } from "../../store/searchAPI/selectores";
 
-function closeModal() {
-  
-}
-
 const PokemonProfileModal = () => {
 const [pokemonDetails, setPokemonDetails] = useState(null);
 const searchBox = useSelector(getPokemonNameSelector);
@@ -25,6 +21,10 @@ useEffect(() => {
   };
   getPokemon();
 }, [searchBox]);
+
+const closeModal = () => {
+  setPokemonDetails(null);
+}
 
   return (
     <>
