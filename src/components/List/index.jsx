@@ -19,6 +19,7 @@ const PRECISION = 1;
 
 export const List = ({ pokemon }) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
   const [isModalOPen, setIsModalOpen] = useState(false);
 
@@ -29,6 +30,7 @@ export const List = ({ pokemon }) => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+    navigate("/");
   }
 
   return (
