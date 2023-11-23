@@ -27,20 +27,22 @@ useEffect(() => {
 }, [searchBox]);
 
   return (
-    <ModalOverlay isOpen={!!pokemonDetails}>
-      <ModalContent>
-        {pokemonDetails ? (
-          <ModalCard>
-            {console.log(pokemonDetails)}
-            <CardAnimation />
+    <>
+      <ModalOverlay isOpen={!!pokemonDetails}>
+        <ModalButton onClick={closeModal}>X</ModalButton>
+        <ModalContent>
+          {pokemonDetails ? (
+            <ModalCard>
+              {console.log(pokemonDetails)}
+              <CardAnimation />
 
-            <CardContent>
+              <CardContent>
                 <ImageContainer>
                   <img src={pokemonDetails.sprites} alt={pokemonDetails.name} />
                 </ImageContainer>
-                  <CardTitle>
-                    {searchBox.charAt(0).toUpperCase() + searchBox.slice(1)}
-                  </CardTitle>
+                <CardTitle>
+                  {searchBox.charAt(0).toUpperCase() + searchBox.slice(1)}
+                </CardTitle>
                 <div>
                   <ul>
                     {pokemonDetails.abilities &&
@@ -53,14 +55,14 @@ useEffect(() => {
                   <p>Weight: {pokemonDetails.weight}</p>
                   <p>Height: {pokemonDetails.height}</p>
                 </div>
-            </CardContent>
-          </ModalCard>
-        ) : (
-          <p>No Pokémon found. Please enter a valid Pokémon name.</p>
-        )}
-        <ModalButton onClick={closeModal}>Close</ModalButton>
-      </ModalContent>
-    </ModalOverlay>
+              </CardContent>
+            </ModalCard>
+          ) : (
+            <p>No Pokémon found. Please enter a valid Pokémon name.</p>
+          )}
+        </ModalContent>
+      </ModalOverlay>
+    </>
   );
 };
 

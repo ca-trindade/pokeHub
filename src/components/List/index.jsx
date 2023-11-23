@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import {Container,
   OrderList,
   ListPokemon,
@@ -50,11 +49,9 @@ export const List = ({ pokemon }) => {
                 {item.height.toFixed(PRECISION) / KG_TO_GRAMS} meters
               </Paragraph>
             </ParagraphContainer>
-            <Link to={`/pokemon/${item.order}`}>
               <ListButton value={item.name} onClick={()=>{handleClick(item)}}>
                 Full Profile
               </ListButton>
-            </Link>
           </ListPokemon>
         </OrderList>
       ))}

@@ -7,7 +7,8 @@ export const ModalOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
@@ -21,13 +22,25 @@ export const ModalContent = styled.div`
 export const ModalButton = styled.button`
   margin-top: 10px;
   padding: 8px 16px;
-  cursor: pointer;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  background: none;
+  color: #f05941;
+  border: 3px solid #f05941;
+  border-radius: 30px;
+  font-size: medium;
+  margin-left: 500px;
+  &:hover {
+    background: #872341;
+  }
 `;
+
 
 export const ModalCard = styled.div`
   width: 590px;
   height: 754px;
-  background: #07182E;
+  background: linear-gradient(#f05941, #22092c);
   position: relative;
   display: flex;
   place-content: center;
@@ -37,9 +50,13 @@ export const ModalCard = styled.div`
 `;
 
 export const CardTitle = styled.h2`
+display: flex;
+justify-content: center;
   z-index: 1;
   color: white;
-  font-size: 2em;
+  margin-top: 0;
+  font-size: 3.5em;
+
 `;
 
 export const CardAnimation = styled.div`
@@ -48,7 +65,7 @@ export const CardAnimation = styled.div`
   background-image: linear-gradient(180deg, rgb(0, 183, 255), rgb(255, 48, 255));
   height: 130%;
   animation: rotBGimg 3s linear infinite;
-  transition: all 0.2s linear;
+  transition: all 0.5s linear;
 
   @keyframes rotBGimg {
     from {
@@ -63,11 +80,14 @@ export const CardAnimation = styled.div`
 
 export const CardContent = styled.div`
   position: absolute;
-  background: #07182E;
+  justify-content: center;
+  background: linear-gradient(#f05941, #22092c);
   inset: 5px;
   border-radius: 15px;
 `;
 
 export const ImageContainer = styled.div`
+display: flex;
+justify-content: center;
 
 `;
