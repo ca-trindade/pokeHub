@@ -1,22 +1,31 @@
 import { useState } from "react";
-import { useNavigate  } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setName } from "../../store/searchAPI/searchSlice";
-import { ContainerInput, InputGo, ButtonGo } from "./style";
+import PokemonProfileModal from "../PokemonProfileModal";
+import { ContainerInput, InputGo, ButtonGo, ErrorContainer } from "./style";
 
 export const SearchInput = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [nameToSearch, setNameToSearch] = useState("");
+  const [keyForModal, setKeyForModal] = useState(0);
 
   function handleClick() {
-    if (nameToSearch.trim() !== ""){
-      dispatch(setName({ searchBox: nameToSearch }));
+    if (
+      nameToSearch !== null &&
+      nameToSearch !== "" &&
+      typeof nameToSearch === "string" &&
+      isNaN(nameToSearch)
+    ) {
+      dispatch(setName({ searchBox: nameToSearch.toLowerCase() }));
+      console.log("Here handleclick from input");
+      setKeyForModal((prev) => prev + 1);
       setNameToSearch("");
-      navigate(`/pokemon/${nameToSearch}`);
     } else {
-      console.warn("Field Empty");
+      const errorMessageElement = document.getElementById("errorMessage");
+      if (errorMessageElement) {
+        errorMessageElement.textContent = "Insert a valid name";
+      }
     }
   }
 
@@ -30,10 +39,12 @@ export const SearchInput = () => {
           value={nameToSearch}
           onChange={(e) => setNameToSearch(e.target.value)}
         />
-          <ButtonGo type="submit" onClick={handleClick}>
-            Go!
-          </ButtonGo>
+        <ButtonGo type="submit" onClick={handleClick}>
+          Go!
+        </ButtonGo>
       </ContainerInput>
+      <ErrorContainer id="errorMessage"></ErrorContainer>
+      {<PokemonProfileModal key={keyForModal} />}
     </>
   );
 };

@@ -5,12 +5,14 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-  background-repeat: no-repeat;
-  background-position: 100%;
+    width: 100vw;
+
     background: ${(props) =>
       props.theme === "light" ? lightTheme.background : darkTheme.background};
     font-family: 'Roboto', sans-serif;
   }
 `;
+
+
 
 export default GlobalStyle;

@@ -27,3 +27,11 @@ export const ButtonGo = styled.button`
   width: 50px;
   border-radius: 10px;
 `;
+
+export const ErrorContainer = styled.p`
+  display: flex;
+  justify-content: center;
+color: red;
+margin-top: 10px;
+
+`;
