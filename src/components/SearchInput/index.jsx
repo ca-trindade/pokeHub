@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { getName } from "../../store/searchAPI/searchSlice";
+import { setName } from "../../store/searchAPI/searchSlice";
 import { ContainerInput, InputGo, ButtonGo } from "./style";
 
 export const SearchInput = () => {
@@ -10,7 +10,7 @@ export const SearchInput = () => {
   const [nameToSearch, setNameToSearch] = useState("");
 
   function handleClick() {
-    dispatch(getName({ searchBox: nameToSearch }));
+    dispatch(setName({ searchBox: nameToSearch }));
     setNameToSearch("");
   }
 

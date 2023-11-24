@@ -1,34 +1,36 @@
 import PropTypes from "prop-types";
-import {Container,
+import {
+  Container,
   OrderList,
   ListPokemon,
   ImagePokemon,
   Title,
-  ParagraphContainer, Span, 
-  Paragraph, 
+  ParagraphContainer,
+  Span,
+  Paragraph,
   ListButton,
 } from "./style";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getName } from "../../store/searchAPI/searchSlice";
+import { setName } from "../../store/searchAPI/searchSlice";
 import PokemonProfileModal from "../PokemonProfileModal";
 
 const KG_TO_GRAMS = 10;
 const PRECISION = 1;
 
 export const List = ({ pokemon }) => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [isModalOPen, setIsModalOpen] = useState(false);
 
   function handleClick(item) {
-    dispatch(getName({ searchBox: item.name }));
+    dispatch(setName({ searchBox: item.name }));
     setIsModalOpen(true);
   }
 
   const closeModal = () => {
     setIsModalOpen(false);
-  }
+  };
 
   return (
     <Container>
@@ -49,17 +51,18 @@ export const List = ({ pokemon }) => {
                 {item.height.toFixed(PRECISION) / KG_TO_GRAMS} meters
               </Paragraph>
             </ParagraphContainer>
-              <ListButton value={item.name} onClick={()=>{handleClick(item)}}>
-                Full Profile
-              </ListButton>
+            <ListButton
+              value={item.name}
+              onClick={() => {
+                handleClick(item);
+              }}
+            >
+              Full Profile
+            </ListButton>
           </ListPokemon>
         </OrderList>
       ))}
-      {isModalOPen && (
-        <PokemonProfileModal
-          closeModal={closeModal}
-        />
-      )}
+      {isModalOPen && <PokemonProfileModal closeModal={closeModal} />}
     </Container>
   );
 };

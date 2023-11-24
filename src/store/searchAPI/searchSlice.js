@@ -8,11 +8,11 @@ const searchInputSlice = createSlice({
   name: "pokemonName",
   initialState,
   reducers: {
-    getName: (state, action) => {
+    setName: (state, action) => {
       state.searchBox = action.payload.searchBox;
     },
   },
 });
 
 export default searchInputSlice.reducer;
-export const { getName } = searchInputSlice.actions;
+export const { setName } = searchInputSlice.actions;
