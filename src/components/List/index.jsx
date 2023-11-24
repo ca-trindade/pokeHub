@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import {
-  Container,
+import { Link, useNavigate } from "react-router-dom";
+import {Container,
   OrderList,
   ListPokemon,
   ImagePokemon,
@@ -19,7 +19,8 @@ const KG_TO_GRAMS = 10;
 const PRECISION = 1;
 
 export const List = ({ pokemon }) => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
   const [isModalOPen, setIsModalOpen] = useState(false);
 
@@ -30,7 +31,8 @@ export const List = ({ pokemon }) => {
 
   const closeModal = () => {
     setIsModalOpen(false);
-  };
+    navigate("/");
+  }
 
   return (
     <Container>

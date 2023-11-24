@@ -39,6 +39,11 @@ export const getPokemonName = async (searchBox) => {
       height: response.data.height,
       order: response.data.order,
       sprites: response.data.sprites.other["official-artwork"].front_default,
+      types: response.data.types.map((type) => ({
+        type: {
+          name: type.type.name,
+        }, 
+      }))
     }];
   } catch (error) {
     console.error("Error:", error);

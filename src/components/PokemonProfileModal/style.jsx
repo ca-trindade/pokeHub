@@ -34,6 +34,7 @@ export const ModalButton = styled.button`
   &:hover {
     background: #872341;
   }
+  cursor: pointer;
 `;
 
 
@@ -50,8 +51,8 @@ export const ModalCard = styled.div`
 `;
 
 export const CardTitle = styled.h2`
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
   z-index: 1;
   color: white;
   margin-top: 0;
@@ -87,7 +88,9 @@ export const CardContent = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-display: flex;
-justify-content: center;
-
+  display: flex;
+  justify-content: center;
+  width: 350px;
+  height: 350px;
+  margin: 0 auto;
 `;

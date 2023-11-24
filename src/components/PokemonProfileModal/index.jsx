@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 import { getPokemonName } from "../../api/GetAxios";
 import { useSelector } from "react-redux";
 import { getPokemonNameSelector } from "../../store/searchAPI/selectores";
+import { useNavigate } from "react-router-dom";
 
 const PokemonProfileModal = () => {
 const [pokemonDetails, setPokemonDetails] = useState(null);
 const searchBox = useSelector(getPokemonNameSelector);
+const navigate = useNavigate();
 
 useEffect(() => {
   const getPokemon = async () => {
@@ -22,14 +24,15 @@ useEffect(() => {
   getPokemon();
 }, [searchBox]);
 
-const closeModal = () => {
+const handleCloseModal = () => {
   setPokemonDetails(null);
+  navigate("/");
 }
 
   return (
     <>
       <ModalOverlay isOpen={!!pokemonDetails}>
-        <ModalButton onClick={closeModal}>X</ModalButton>
+        <ModalButton onClick={handleCloseModal}>X</ModalButton>
         <ModalContent>
           {pokemonDetails ? (
             <ModalCard>
@@ -54,6 +57,13 @@ const closeModal = () => {
                 <div>
                   <p>Weight: {pokemonDetails.weight}</p>
                   <p>Height: {pokemonDetails.height}</p>
+                </div>
+                <div>
+                  <ul>
+                    {pokemonDetails.types && pokemonDetails.types.map((type, index) => {
+                      return <li key={index}>{type.type.name}</li>
+                    })}
+                  </ul>
                 </div>
               </CardContent>
             </ModalCard>

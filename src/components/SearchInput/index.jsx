@@ -1,17 +1,23 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setName } from "../../store/searchAPI/searchSlice";
 import { ContainerInput, InputGo, ButtonGo } from "./style";
 
 export const SearchInput = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [nameToSearch, setNameToSearch] = useState("");
 
   function handleClick() {
-    dispatch(setName({ searchBox: nameToSearch }));
-    setNameToSearch("");
+    if (nameToSearch.trim() !== ""){
+      dispatch(setName({ searchBox: nameToSearch }));
+      setNameToSearch("");
+      navigate(`/pokemon/${nameToSearch}`);
+    } else {
+      console.warn("Field Empty");
+    }
   }
 
   return (
@@ -24,11 +30,9 @@ export const SearchInput = () => {
           value={nameToSearch}
           onChange={(e) => setNameToSearch(e.target.value)}
         />
-        <Link to={`/pokemon/${nameToSearch}`}>
           <ButtonGo type="submit" onClick={handleClick}>
             Go!
           </ButtonGo>
-        </Link>
       </ContainerInput>
     </>
   );
