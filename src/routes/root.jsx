@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../components/hooks/useContext";
 import GlobalStyle from "../globalStyles";
 import PokemonProfileModal from "../components/PokemonProfileModal";
+import { PokemonFavorites } from "../components/PokemonFavorites";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
     path: "/pokemon/:id",
     element: <PokemonProfileModal />,
   },
+  {
+    path: "/favorites",
+    element: <PokemonFavorites />,
+  }
 ]);
 
 export default function Root() {

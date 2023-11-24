@@ -9,24 +9,39 @@ import {Container,
   Span,
   Paragraph,
   ListButton,
+  FavoriteButton,
 } from "./style";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setName } from "../../store/searchAPI/searchSlice";
 import PokemonProfileModal from "../PokemonProfileModal";
+import { PokemonFavorites } from "../PokemonFavorites";
 
 const KG_TO_GRAMS = 10;
 const PRECISION = 1;
 
 export const List = ({ pokemon }) => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [isModalOPen, setIsModalOpen] = useState(false);
+  const [favorites, setFavorite] = useState(null);
 
   function handleClick(item) {
     dispatch(setName({ searchBox: item.name }));
     setIsModalOpen(true);
+  }
+
+  const handleFavorite = (item) => {
+    const isFavorite = favorites.some((fav) => fav.name === item.name);
+
+    if (isFavorite) {
+      setFavorite(favorites.filter((fav) => fav.name !== item.name));
+    } else {
+      console.log("call to api: ", item);
+      setFavorite([...favorites, item]);
+      navigate("/favorites");
+    }
   }
 
   const closeModal = () => {
@@ -61,10 +76,14 @@ export const List = ({ pokemon }) => {
             >
               Full Profile
             </ListButton>
+            <FavoriteButton onClick={() => handleFavorite(item)}> 
+                {favorites.some((fav) => fav.name === item.name) ? '❤️' : '🤍'}
+            </FavoriteButton>
           </ListPokemon>
         </OrderList>
       ))}
       {isModalOPen && <PokemonProfileModal closeModal={closeModal} />}
+      {<PokemonFavorites favorites={favorites}></PokemonFavorites>}
     </Container>
   );
 };

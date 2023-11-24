@@ -104,3 +104,28 @@ export const ListButton = styled.button`
     }
   }
 `;
+
+export const FavoriteButton = styled.button`
+  height: 40px;
+  width: 120px;
+  border-radius: 10px;
+  background: radial-gradient(#be3144, #872341);
+  font-size: 1.2rem;
+  color: aliceblue;
+  margin-top: 5px;
+  justify-content: right;
+
+  &:active {
+    background: radial-gradient(#22092c, #872341);
+  }
+
+  @media (min-width: 768px) {
+    &:hover {
+      background: radial-gradient(#22092c, #872341);
+    }
+    &:active {
+      background: radial-gradient(#be3144, #22092c);
+    }
+  }
+`;
+
