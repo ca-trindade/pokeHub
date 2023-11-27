@@ -46,6 +46,7 @@ export const Container = styled.div`
 const CardImg2 = styled.img`
   height: 20vh;
 
+
   @media (min-width: 768px) {
     height: 30vh;
   }

@@ -32,7 +32,7 @@ export const Card = () => {
     return () => clearInterval(intervalId);
   }, [convertToEntries.length, currentIndex]);
 
-  console.log(randomNumber);
+  //console.log(randomNumber);
 
   return (
     <>

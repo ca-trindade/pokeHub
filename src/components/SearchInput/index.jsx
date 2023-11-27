@@ -6,11 +6,11 @@ import { ContainerInput, InputGo, ButtonGo, ErrorContainer } from "./style";
 
 export const SearchInput = () => {
   const dispatch = useDispatch();
-
   const [nameToSearch, setNameToSearch] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [keyForModal, setKeyForModal] = useState(0);
 
-  function handleClick() {
+  function handleClick(nameToSearch) {
     if (
       nameToSearch !== null &&
       nameToSearch !== "" &&
@@ -20,11 +20,9 @@ export const SearchInput = () => {
       dispatch(setName({ searchBox: nameToSearch.toLowerCase() }));
       setKeyForModal((prev) => prev + 1);
       setNameToSearch("");
+      console.log(keyForModal);
     } else {
-      const errorMessageElement = document.getElementById("errorMessage");
-      if (errorMessageElement) {
-        errorMessageElement.textContent = "Insert a valid name";
-      }
+      setErrorMessage("Insert a valid name");
     }
   }
 
@@ -37,12 +35,22 @@ export const SearchInput = () => {
           placeholder="Search Pokemon"
           value={nameToSearch}
           onChange={(e) => setNameToSearch(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleClick(nameToSearch);
+            }
+          }}
         />
-        <ButtonGo type="submit" onClick={handleClick}>
+        <ButtonGo
+          type="submit"
+          onClick={() => {
+            handleClick(nameToSearch);
+          }}
+        >
           Go!
         </ButtonGo>
       </ContainerInput>
-      <ErrorContainer id="errorMessage"></ErrorContainer>
+      <ErrorContainer id="errorMessage">{errorMessage}</ErrorContainer>
       {<PokemonProfileModal key={keyForModal} />}
     </>
   );

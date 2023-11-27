@@ -8,7 +8,9 @@ const GlobalStyle = createGlobalStyle`
     width: 100vw;
 
     background: ${(props) =>
-      props.theme === "light" ? lightTheme.background : darkTheme.background};
+      props.theme === "light"
+        ? lightTheme.background
+        : darkTheme.background} no-repeat center center/cover;
     font-family: 'Roboto', sans-serif;
   }
 `;
