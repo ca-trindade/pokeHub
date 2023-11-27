@@ -9,8 +9,12 @@ const dataApiSlice = createSlice({
   initialState,
   reducers: {
     getPokemonApi: (state, action) => {
-      state.pokemonDataFromApi = action.payload.pokemonDataFromApi;
-    }  },
+      state.pokemonDataFromApi = {
+        ...state.pokemonDataFromApi,
+        ...action.payload.pokemonDataFromApi
+      };
+    },
+  }
 });
 
 export default dataApiSlice.reducer;

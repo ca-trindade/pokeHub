@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const ModalOverlay = styled.div`
-  display: ${props => (props.isOpen ? "flex" : "none")};
+export const ModalOverlay = styled.dialog`
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
@@ -13,11 +13,6 @@ export const ModalOverlay = styled.div`
   align-items: center;
 `;
 
-export const ModalContent = styled.div`
-  background-color: none;
-  padding: 20px;
-  border-radius: 5px;
-`;
 
 export const ModalButton = styled.button`
   margin-top: 10px;

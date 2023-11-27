@@ -3,7 +3,6 @@ import styled, { keyframes } from "styled-components";
 const rotate = keyframes`
   0% {
     transform: rotate(0deg)
-   
   }
   50% {
     transform: rotate(180deg);
@@ -15,14 +14,10 @@ const rotate = keyframes`
 
 const move = keyframes`
   0% {
-    transform: translateX(0)
-   
-  }
-  50% {
-    transform: translateX(20px);
+transform: scale(0);
   }
   100% {
-    transform: translateX(0);
+    transform: scale(10000%);
   }
 `;
 
@@ -32,10 +27,10 @@ export const SwitchThemeButton2 = styled.img`
 
 export const SwitchThemeButton = styled(SwitchThemeButton2)`
   &:hover {
-    animation: ${move} 1s infinite;
+    animation: ${rotate} 1s infinite;
   }
 
   &:active {
-    animation: ${rotate} 1s infinite;
+    animation: ${move} 0.05s;
   }
 `;

@@ -18,7 +18,6 @@ export const SearchInput = () => {
       isNaN(nameToSearch)
     ) {
       dispatch(setName({ searchBox: nameToSearch.toLowerCase() }));
-      console.log("Here handleclick from input");
       setKeyForModal((prev) => prev + 1);
       setNameToSearch("");
     } else {

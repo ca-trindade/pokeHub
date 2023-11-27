@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+
 import {Container,
   OrderList,
   ListPokemon,
@@ -10,28 +10,17 @@ import {Container,
   Paragraph,
   ListButton,
 } from "./style";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setName } from "../../store/searchAPI/searchSlice";
-import PokemonProfileModal from "../PokemonProfileModal";
 
 const KG_TO_GRAMS = 10;
 const PRECISION = 1;
 
 export const List = ({ pokemon }) => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
-
-  const [isModalOPen, setIsModalOpen] = useState(false);
 
   function handleClick(item) {
     dispatch(setName({ searchBox: item.name }));
-    setIsModalOpen(true);
-  }
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    navigate("/");
   }
 
   return (
@@ -64,7 +53,6 @@ export const List = ({ pokemon }) => {
           </ListPokemon>
         </OrderList>
       ))}
-      {isModalOPen && <PokemonProfileModal closeModal={closeModal} />}
     </Container>
   );
 };

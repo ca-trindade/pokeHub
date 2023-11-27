@@ -4,6 +4,7 @@ import { List } from "./components/List";
 import { getPokemonList } from "./api/GetAxios";
 import { getPokemonApi } from "./store/dataAPI/dataAPISlice";
 import { Navbar } from "./components/Navbar";
+import { Card } from "./components/Card";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,8 +33,8 @@ function App() {
   return (
     <>
       <Navbar />
+      <Card />
       <List pokemon={pokemon} />
-
       <button onClick={handleClick}>More</button>
     </>
   );

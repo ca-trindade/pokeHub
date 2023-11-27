@@ -1,48 +1,51 @@
 import { useEffect, useState } from "react";
-import { getPokemonName } from "../../api/GetAxios";
 import { useSelector } from "react-redux";
-import { getPokemonNameSelector } from "../../store/searchAPI/selectores";
+import { setDataApiSelector } from "../../store/dataAPI/selectores";
+import {
+  CardContainer,
+  Container,
+  CardOrder,
+  CardImg,
+  CardName,
+} from "./style";
 
 export const Card = () => {
-  const [pokemonDetails, setPokemonDetails] = useState([]);
-  const searchBox = useSelector(getPokemonNameSelector);
+  const pokemonDataFromStore = useSelector(setDataApiSelector);
+  const convertToEntries = Object.values(
+    pokemonDataFromStore.pokemonDataFromApi
+  );
+
+  let randomNumber =
+    convertToEntries[Math.floor(Math.random() * convertToEntries.length)];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const getPokemon = async () => {
-      try {
-        const data = await getPokemonName(searchBox);
-        setPokemonDetails(data[0]);
-        console.log(data);
-      } catch (error) {
-        console.error("Error:", error);
+    const intervalId = setInterval(() => {
+      if (currentIndex === convertToEntries.length - 1) {
+        setCurrentIndex(0);
+      } else {
+        setCurrentIndex(currentIndex + 1);
       }
-    };
-    getPokemon();
-  }, [searchBox]);
+    }, 6000);
+
+    return () => clearInterval(intervalId);
+  }, [convertToEntries.length, currentIndex]);
+
+  console.log(randomNumber);
 
   return (
     <>
-      <div>
-        <div>
-          <img src={pokemonDetails.sprites} alt={pokemonDetails.name} />
-        </div>
-        <div>
-          <h1>{searchBox.charAt(0).toUpperCase() + searchBox.slice(1)}</h1>
-        </div>
-        <div>
-          <ul>
-            {pokemonDetails.abilities &&
-              pokemonDetails.abilities.map((ability, index) => (
-                <li key={index}>{ability.name}</li>
-              ))}
-          </ul>
-        </div>
-        <div>
-          <p>Weight: {pokemonDetails.weight}</p>
-          <p>Height: {pokemonDetails.height}</p>
-        </div>
-      </div>
-      <div></div>
+      <CardContainer>
+        <Container>
+          <CardName>
+            {randomNumber.name.charAt(0).toUpperCase() +
+              randomNumber.name.slice(1)}
+          </CardName>
+          <CardOrder>#{randomNumber.order}</CardOrder>
+        </Container>
+        <CardImg src={randomNumber.sprites} />
+      </CardContainer>
     </>
   );
 };
