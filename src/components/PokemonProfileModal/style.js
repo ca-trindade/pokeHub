@@ -50,11 +50,11 @@ export const ModalCard = styled.div`
 
   @media (min-width: 768px) {
     width: 590px;
-    height: 754px;
+    height: 800;
   }
   @media (min-width: 1440px) {
     width: 590px;
-    height: 754px;
+    height: 800;
   }
 `;
 
@@ -70,6 +70,7 @@ export const CardTitle = styled.h2`
   color: white;
   margin-top: 0;
   font-size: 3.5em;
+  margin-bottom: 20px;
 `;
 
 export const ContainerUList = styled.div`
@@ -119,6 +120,7 @@ export const List = styled.li`
   border: 1px aliceblue solid;
   border-radius: 10px;
   padding: 5px;
+  margin-bottom: 20px;
 `;
 
 export const CardAnimation = styled.div`
@@ -130,7 +132,7 @@ export const CardAnimation = styled.div`
     rgb(255, 48, 255)
   );
   height: 130%;
-  animation: rotBGimg 3s linear infinite;
+  animation: rotBGimg 6s linear infinite;
   transition: all 0.5s linear;
 
   @keyframes rotBGimg {

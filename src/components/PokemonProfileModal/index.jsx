@@ -17,6 +17,7 @@ import {
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import {getPokemonName } from "../../api/GetAxios"
 import { setDataApiSelector } from "../../store/dataAPI/selectores";
 import { setName } from "../../store/searchAPI/searchSlice";
 import { getPokemonNameSelector } from "../../store/searchAPI/selectores";
@@ -32,12 +33,24 @@ const PokemonProfileModal = () => {
   );
 
   useEffect(() => {
+    if (!pokemonDetails){ 
     const listLenght = convertToEntries.length;
     for (let i = 0; i < listLenght; i++) {
       if (convertToEntries[i].name === searchBox) {
         setPokemonDetails(convertToEntries[i]);
+      } else {
+          const getPokemon = async () => {
+            try {
+              const data = await getPokemonName(searchBox);
+              setPokemonDetails(data[0]);
+              console.log(data);
+            } catch (error) {
+              console.error("Error:", error);
+            }
+          };
+          getPokemon();
       }
-    }
+    }}
   }, [searchBox, pokemonDetails, convertToEntries]);
 
   const handleCloseModal = () => {
@@ -63,9 +76,19 @@ const PokemonProfileModal = () => {
                 <img src={pokemonDetails.sprites} alt={pokemonDetails.name} />
               </ImageContainer>
               <CardTitle>
-                {searchBox.charAt(0).toUpperCase() + searchBox.slice(1)}
+                {pokemonDetails.name.charAt(0).toUpperCase() +
+                  pokemonDetails.name.slice(1)}
               </CardTitle>
-
+              <ContainerUList>
+                <UList>
+                  {pokemonDetails.types &&
+                    pokemonDetails.types.map((type, index) => {
+                      return (
+                        <List key={index}>{type.type.name.toUpperCase()}</List>
+                      );
+                    })}
+                </UList>
+              </ContainerUList>
               <ContainerUList>
                 <UList>
                   {pokemonDetails.abilities &&
@@ -85,14 +108,6 @@ const PokemonProfileModal = () => {
                   meters
                 </Paragraph>
               </ContainerParagraph>
-              <div>
-                <ul>
-                  {pokemonDetails.types &&
-                    pokemonDetails.types.map((type, index) => {
-                      return <li key={index}>{type.type.name}</li>;
-                    })}
-                </ul>
-              </div>
             </CardContent>
           </ModalCard>
         </ModalOverlay>
