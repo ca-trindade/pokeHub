@@ -18,7 +18,7 @@ import {
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import {getPokemonName } from "../../api/GetAxios"
+import { getPokemonName } from "../../api/GetAxios";
 import { setDataApiSelector } from "../../store/dataAPI/selectores";
 import { setName } from "../../store/searchAPI/searchSlice";
 import { getPokemonNameSelector } from "../../store/searchAPI/selectores";
