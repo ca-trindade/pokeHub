@@ -12,15 +12,13 @@ export const SearchInput = () => {
 
   function handleClick(nameToSearch) {
     if (
-      nameToSearch !== null &&
-      nameToSearch !== "" &&
       typeof nameToSearch === "string" &&
       isNaN(nameToSearch)
     ) {
       dispatch(setName({ searchBox: nameToSearch.toLowerCase() }));
       setKeyForModal((prev) => prev + 1);
       setNameToSearch("");
-      console.log(keyForModal);
+      setErrorMessage("");
     } else {
       setErrorMessage("Insert a valid name");
     }

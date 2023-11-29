@@ -161,3 +161,11 @@ export const ImageContainer = styled.div`
   height: 350px;
   margin: 0 auto;
 `;
+
+export const ErrorName = styled.p`
+  display: flex;
+  justify-content: center;
+font-size: medium;
+margin: 0 auto 30px auto;
+color: red;
+`;

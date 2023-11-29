@@ -1,4 +1,4 @@
-import App from "../App";
+import App from "../pages/LandingPage/App";
 import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { persistor, store } from "../store/store";

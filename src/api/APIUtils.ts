@@ -5,7 +5,7 @@ type PATH = {
 }
 
 export const PATH = {
-pokemon: "pokemon/", //{id or name}
+pokemon: "pokemon/",
 }
 
 

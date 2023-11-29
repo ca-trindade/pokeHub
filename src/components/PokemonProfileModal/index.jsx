@@ -13,6 +13,7 @@ import {
   CardContent,
   ModalButton,
   ImageContainer,
+  ErrorName,
 } from "./style";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -25,6 +26,7 @@ import { getPokemonNameSelector } from "../../store/searchAPI/selectores";
 const PokemonProfileModal = () => {
   const dispatch = useDispatch();
   const [pokemonDetails, setPokemonDetails] = useState(null);
+  const [pokemonDetailsError, setPokemonDetailsError] = useState(null);
   const searchBox = useSelector(getPokemonNameSelector);
 
   const pokemonDataFromStore = useSelector(setDataApiSelector);
@@ -33,25 +35,29 @@ const PokemonProfileModal = () => {
   );
 
   useEffect(() => {
-    if (!pokemonDetails){ 
-    const listLenght = convertToEntries.length;
-    for (let i = 0; i < listLenght; i++) {
-      if (convertToEntries[i].name === searchBox) {
-        setPokemonDetails(convertToEntries[i]);
-      } else {
+    if (searchBox) {
+      for (let i = 0; i < convertToEntries.length; i++) {
+        if (convertToEntries[i].name === searchBox) {
+          setPokemonDetails(convertToEntries[i]);
+          return;
+        } else {
           const getPokemon = async () => {
             try {
               const data = await getPokemonName(searchBox);
               setPokemonDetails(data[0]);
-              console.log(data);
+              return;
             } catch (error) {
-              console.error("Error:", error);
+              return (
+                dispatch(setName({ searchBox: "" })),
+                setPokemonDetailsError("Error! That was not a Pokemon's name")
+              );
             }
           };
           getPokemon();
+        }
       }
-    }}
-  }, [searchBox, pokemonDetails, convertToEntries]);
+    }
+  }, [searchBox]);
 
   const handleCloseModal = () => {
     setPokemonDetails(null);
@@ -63,6 +69,8 @@ const PokemonProfileModal = () => {
 
   return (
     <>
+      <ErrorName>{pokemonDetailsError}</ErrorName>
+
       {pokemonDetails && (
         <ModalOverlay id="modal" onClick={handleCloseModal}>
           <ModalButton onClick={handleCloseModal}>X</ModalButton>

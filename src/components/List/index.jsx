@@ -13,6 +13,7 @@ import {Container,
 import { useDispatch } from "react-redux";
 import { setName } from "../../store/searchAPI/searchSlice";
 
+
 const KG_TO_GRAMS = 10;
 const PRECISION = 1;
 
@@ -25,7 +26,7 @@ export const List = ({ pokemon }) => {
 
   return (
     <Container>
-      {pokemon.map((item) => (
+      {Array.isArray(pokemon) && pokemon.map((item) => (
         <OrderList key={item.order}>
           <ListPokemon>
             <ImagePokemon src={item.sprites} alt={item.name} />

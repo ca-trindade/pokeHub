@@ -14,7 +14,7 @@ export const Card = () => {
   const convertToEntries = Object.values(
     pokemonDataFromStore.pokemonDataFromApi
   );
-
+  // console.log(setDataApiSelector);
   let randomNumber =
     convertToEntries[Math.floor(Math.random() * convertToEntries.length)];
 
@@ -31,8 +31,6 @@ export const Card = () => {
 
     return () => clearInterval(intervalId);
   }, [convertToEntries.length, currentIndex]);
-
-  //console.log(randomNumber);
 
   return (
     <>
