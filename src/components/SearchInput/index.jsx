@@ -11,10 +11,7 @@ export const SearchInput = () => {
   const [keyForModal, setKeyForModal] = useState(0);
 
   function handleClick(nameToSearch) {
-    if (
-      typeof nameToSearch === "string" &&
-      isNaN(nameToSearch)
-    ) {
+    if (typeof nameToSearch === "string" && isNaN(nameToSearch)) {
       dispatch(setName({ searchBox: nameToSearch.toLowerCase() }));
       setKeyForModal((prev) => prev + 1);
       setNameToSearch("");
@@ -40,6 +37,7 @@ export const SearchInput = () => {
           }}
         />
         <ButtonGo
+          data-cypress="goButton"
           type="submit"
           onClick={() => {
             handleClick(nameToSearch);

@@ -36,9 +36,9 @@ const PokemonProfileModal = () => {
 
   useEffect(() => {
     if (searchBox) {
-      for (let i = 0; i < convertToEntries.length; i++) {
-        if (convertToEntries[i].name === searchBox) {
-          setPokemonDetails(convertToEntries[i]);
+      const matchingObject = convertToEntries.find(item => item.name === searchBox)
+        if (matchingObject) {
+          setPokemonDetails(matchingObject);
           return;
         } else {
           const getPokemon = async () => {
@@ -55,7 +55,7 @@ const PokemonProfileModal = () => {
           };
           getPokemon();
         }
-      }
+
     }
   }, [searchBox]);
 

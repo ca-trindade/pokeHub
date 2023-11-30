@@ -9,12 +9,13 @@ import {
   CardName,
 } from "./style";
 
+
+
 export const Card = () => {
   const pokemonDataFromStore = useSelector(setDataApiSelector);
   const convertToEntries = Object.values(
     pokemonDataFromStore.pokemonDataFromApi
   );
-  // console.log(setDataApiSelector);
   let randomNumber =
     convertToEntries[Math.floor(Math.random() * convertToEntries.length)];
 
