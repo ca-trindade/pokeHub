@@ -26,7 +26,7 @@ PokeHub is a web application that utilizes the Pokémon API (https://pokeapi.co/
 - **Styled Components**: CSS-in-JS library for styling React components.
 - **React Router**: Library for routing in a React application.
 - **Lodash**: Utility library for simplifying data manipulation in JavaScript.
-**Cypress for Testing**: Integration of Cypress for end-to-end testing.
+- **Cypress for Testing**: Integration of Cypress for end-to-end testing.
 
 ## State Management with Redux Toolkit
 
