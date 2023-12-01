@@ -26,6 +26,27 @@ PokeHub is a web application that utilizes the Pokémon API (https://pokeapi.co/
 - **Styled Components**: CSS-in-JS library for styling React components.
 - **React Router**: Library for routing in a React application.
 - **Lodash**: Utility library for simplifying data manipulation in JavaScript.
+**Cypress for Testing**: Integration of Cypress for end-to-end testing.
+
+## State Management with Redux Toolkit
+
+Redux Toolkit is used with two stores:
+1. **pokemonDataFromApi**: Accumulates data received in blocks of 6 from the API and ensures all elements are stored cumulatively.
+2. **pokemonName**: Stores the Pokémon name entered in the search box, utilized in the modal section to avoid passing unnecessary props. And also used to complete the URL to fetching API when the pokemon's data isn't matching on pokemonDataFromApi store.
+
+The **pokemonDataFromApi** store is also used to load the Card component, displaying Pokémon randomly from the accumulated list. Redux Persist ensures a seamless refresh experience when the modal is open.
+
+## Router for Navigation and URL Creation
+
+The application utilizes React Router for efficient navigation and URL creation.
+
+## Additional Components
+
+- **Loading Component**: Loaded in the Card section, since is the final component to obtain updated information when the page loads.
+- **SearchInput Component**: Displays an error message for inputs that differ from recognized Pokémon names in a list called **pokemonsName**.
+**pokemonsName** it also provides letter-based suggestions from a static list, organized alphabetically, reducing the loop to the number of English alphabet letters.
+
+
 
 ## Getting Started
 
@@ -43,3 +64,9 @@ PokeHub is a web application that utilizes the Pokémon API (https://pokeapi.co/
    yarn dev
    ```
 4. Open the application in your browser at http://localhost:5173
+
+
+*Tests. Run Cypress to execute your tests:
+   ```bash
+   yarn run cypress open
+   ```
