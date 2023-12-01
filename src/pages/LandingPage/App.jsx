@@ -6,7 +6,7 @@ import { getPokemonApi } from "../../store/dataAPI/dataAPISlice";
 import { Navbar } from "../../components/Navbar";
 import { Card } from "../../components/Card";
 import { Loading } from "../Loading";
-import { Container } from "./style"
+import { Container, ButtonContainer, ShowMoreButton } from "./style";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,9 +35,17 @@ function App() {
   return (
     <>
       <Navbar />
-      {pokemon.length === 0 ? (<Container><Loading /></Container>) : <Card />}
+      {pokemon.length === 0 ? (
+        <Container>
+          <Loading />
+        </Container>
+      ) : (
+        <Card />
+      )}
       <List pokemon={pokemon} />
-      <button onClick={handleClick}>More</button>
+      <ButtonContainer>
+        <ShowMoreButton onClick={handleClick}>More</ShowMoreButton>
+      </ButtonContainer>
     </>
   );
 }
