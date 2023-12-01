@@ -1,5 +1,8 @@
 # PokeHub
 
+![image](https://github.com/ca-trindade/pokeHub/assets/88114751/c24aa3ce-023f-4a65-b0f3-9495a5860d8c)
+
+
 ## Overview
 
 PokeHub is a web application that utilizes the Pokémon API (https://pokeapi.co/) to provide users with information about various Pokémon. The project is a collaborative effort by [ca-trindade](https://github.com/ca-trindade) and [tatitaketsuma](https://github.com/tatitaketsuma).
